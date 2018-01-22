@@ -15,8 +15,7 @@
 #include<fstream>
 #include <vector>
 //#include "Boinomstruct.h"
-#include "binomstuct1.h"
-#include <list>
+#include "funcbinom.h"
 using namespace std;
 
 
@@ -28,15 +27,15 @@ void test_1(string file_out)
     
    
     vector<MinHeap> vec1;
-    vector<bmheap*> vec2;
+    vector<node*> vec2;
     
     int buff=0;
     
-    for (int i=0; i<2; i++)
+    for (int i=0; i<2000; i++)
     {
         MinHeap binh;
         srand(i);
-        for(int j=0; j<1000000; j++)
+        for(int j=0; j<10000; j++)
         {
             buff = rand() %1500000000 -750000000;
             binh.insertKey(buff);
@@ -58,16 +57,16 @@ void test_1(string file_out)
         vec2.push_back(binomh);
         
     }*/
-    for (int i=0; i<2; i++)
+    for (int i=0; i<2000; i++)
     {
     srand(i);
-    bmheap* binomh = new bmheap();
+        node* binomh = nullptr;
         
-        for(int j=0; j<1000000; j++)
+        for(int j=0; j<10000; j++)
         {
             
             buff = rand() %1500000000 -750000000;
-            binomh = binomh->bmheap_insert(binomh, buff, std::to_string (buff) );
+            binomh = Insert(buff, binomh);
         }
         
         vec2.push_back(binomh);
@@ -89,15 +88,14 @@ void test_1(string file_out)
     fileout<<"************* Result: ****************"<<endl;
     fileout<<"***** BinHeap - "<< (float)result_clock/CLOCKS_PER_SEC<< " second *************"<<endl;
     
-    bmheap* binomheap = new bmheap();
-    vector<bmheap*>::iterator it2;
+    node* binomheap = vec2.at(0);
+    vector<node*>::iterator it2;
     start_clock = 0;
     end_clock=0;
     start_clock = clock();
-    for(it2 = vec2.begin(); it2!= vec2.end();it2++)
+    for(int i=0; i<vec2.size()-1; i++)
     {
-        binomheap = binomheap->bmheap_union(binomheap, *it2);
-        
+        binomheap = Union(binomheap, vec2.at(i+1));
     }
         
     end_clock = clock();
