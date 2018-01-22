@@ -20,12 +20,12 @@ public:
     bmheap *sibling;
     int max_key;
 public:
-    bmheap():degree(NULL),child(nullptr),sibling(nullptr),value(""),key(0), max_key(-2147483648){};
-    bmheap(int k, std::string a, int mk):degree(0),child(nullptr),sibling(nullptr),value(a),key(k),max_key(mk){};
+    bmheap():degree(0),parent(nullptr),child(nullptr),sibling(nullptr),value(""),key(0), max_key(-2147483648){};
+    bmheap(int k, std::string a, int mk):parent(nullptr),degree(0),child(nullptr),sibling(nullptr),value(a),key(k),max_key(mk){};
     void bmheap_linktress( bmheap *y,  bmheap *z);
     bmheap* bmheap_mergelists( bmheap *a,  bmheap *b);
-    bmheap* bmheap_union( bmheap *a,  bmheap *b);
-    bmheap* bmheap_insert( bmheap *h, int key, std::string value);
+    bmheap* bmheap_union(bmheap *a,  bmheap *b);
+    bmheap* bmheap_insert( bmheap* h, int key, std::string value);
     inline const int getmax();
     void print_heap();
     void print_tree(bmheap * a);
@@ -130,7 +130,7 @@ bmheap*  bmheap::bmheap_mergelists( bmheap *a, bmheap *b)
 
 bmheap* bmheap::bmheap_union( bmheap *a,  bmheap *b) {
     bmheap *h, *prevx, *x, *nextx;
-    h = bmheap_mergelists(a, b); prevx = nullptr;
+    h = bmheap_mergelists(a, b);
     x = h;
     nextx = h->sibling;
     while (nextx != nullptr) {
@@ -159,11 +159,11 @@ bmheap* bmheap::bmheap_union( bmheap *a,  bmheap *b) {
 
 
 
-bmheap* bmheap::bmheap_insert( bmheap *h, int key, std::string value)
+bmheap* bmheap::bmheap_insert(bmheap* h, int key, std::string value)
 {
-    if (key>max_key) max_key = key;
+    if (key>h->max_key) h->max_key = key;
     bmheap *node = new bmheap(key,value,max_key);
     if (h == nullptr) return node;
-    return bmheap_union(h, node);
+    return bmheap_union(this, node);
 };
 #endif /* binomstuct1_h */
