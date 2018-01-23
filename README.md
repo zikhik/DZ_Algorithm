@@ -1,4 +1,4 @@
-# DZ_Algorithm
+# DZ_Algorithm_Binary_VS_Binomial_Heaps_MegaFight
 ***
 ### Формат входных данных и выходных данных.
 ***
