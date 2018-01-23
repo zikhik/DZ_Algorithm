@@ -7,8 +7,6 @@
 //
 #include "speed_test.h"
 #include <iostream>
-#include "BinHeap.h"
-#include "BinomHeap.h"
 #include "work_with_file.h"
 using namespace std;
 
@@ -30,21 +28,16 @@ int main(int argc, char* argv[])
     };
     if (mode_work == "speed_test")
     {
-        //test_1(out_f);
-        //test_2(out_f);
-        //test_34(out_f);
+        test_1(out_f);
+        test_2(out_f);
+        test_34(out_f);
         
         
     };
-    bmheap* test2 = new bmheap();
-    int buff;
-    for (int i = 0; i< 3; i++)
-    {
-        cin>>buff;
-        test2 = test2->bmheap_insert(test2, buff, std::to_string (buff) );
-}
-    cout<<test2->key;
-    test2->print_heap();
+   
+    
+   
+    
     
     return 0 ;
     

@@ -9,7 +9,6 @@
 #ifndef work_with_file_h
 #define work_with_file_h
 #include "BinHeap.h"
-#include "BinomHeap.h"
 #include <iostream>
 #include<fstream>
 using namespace std;
