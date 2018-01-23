@@ -11,8 +11,9 @@
 #include "BinHeap.h"
 #include <iostream>
 #include<fstream>
+#include "funcbinom.h"
 using namespace std;
-/*
+
 int inp_from_file(string file_in, string file_out)
 {
     std::ifstream fin(file_in, ios::in );
@@ -21,7 +22,7 @@ int inp_from_file(string file_in, string file_out)
     std::string command;
     
     
-    BinomHeap binomh;
+    node* binomh = nullptr;
     MinHeap binh;
     
     while (!fin.eof()) {
@@ -31,19 +32,19 @@ int inp_from_file(string file_in, string file_out)
             int key;
             fin >> key;
             binh.insertKey((int)key);
-            binomh.insert((int)key);
+            binomh = Insert((int)key, binomh);
             
         }
         if (command == "GetMin")
         {
             fout<<binh.getMin();
-            fout<<binomh.getMin()->data;
+            fout<<GetMin(binomh);
             
         }
         if (command == "Print")
         {
             binh.printfile(file_out);
-            binomh.printfile(file_out);
+            printfilebinom(binomh, file_out);
         }
         
     
@@ -51,13 +52,20 @@ int inp_from_file(string file_in, string file_out)
         if (command == "ExtractMin")
         {
             binh.extractMin();
-            binomh.extractMin();
+            binomh = ExtractMin(binomh, 1);
         }
+        if (command == "GetMax")
+        {
+            fout<<binh.getmax();
+            fout<<GetMax(binomh);
+            
+        }
+
     }
     
         return 0;
 
 
-}*/
+}
 
 #endif /* work_with_file_h */
