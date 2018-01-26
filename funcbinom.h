@@ -20,12 +20,12 @@ struct node{
     struct node *child;
 };
 
-//union function.
+//объеденение двух куч
 struct node * Union(struct node *h1, struct node *h2){
     struct node *head = NULL;
     
     
-    //Merging.
+    //соеденение списков вершин
     if(h1==NULL && h2==NULL){
         return h1;
         
@@ -81,7 +81,7 @@ struct node * Union(struct node *h1, struct node *h2){
             temp = temp2;
         }
         
-        // adjusting the heap for making correct binomialHeap.
+        // приводим в порядок кучу
         struct node *t3 = head;
         
         while(t3->sibling!=NULL){
@@ -168,7 +168,7 @@ struct node * Union(struct node *h1, struct node *h2){
     }
 }
 
-//inserting function.
+//вставляем ключ
 struct node *Insert(int x, struct node *head){
     struct node *temp = (node *)malloc(sizeof(struct node));
     temp->data = x;
@@ -180,7 +180,7 @@ struct node *Insert(int x, struct node *head){
     
 }
 
-//extracting mean from binomialHeap.
+//извлечение минимума из кучи
 struct node *ExtractMin(struct node *head,ll Sign){
     
     if(head==NULL){
@@ -286,7 +286,7 @@ struct node *ExtractMin(struct node *head,ll Sign){
     }
 }
 
-//printing the heap.
+//печать кучи
 void showHeap( struct node *x, int depth){
     if (x->sibling != NULL)
         showHeap( x->sibling, depth);
@@ -305,7 +305,7 @@ void showHeap( struct node *x, int depth){
     }
 }
 
-//printing the heap.
+//печать кучи
 void showBinomialHeap(struct node *head){
     cout << "Stucture of binomial heap " << endl;
     if (head == NULL) cout << "Empty heap" << endl;
